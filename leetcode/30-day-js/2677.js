@@ -4,22 +4,31 @@
  * @return {Array}
  */
 var chunk = function(arr, size) {
-    const newArr = []
     let tempArr = []
-    let count = 0
-     for(let i =0;i<arr.length;i++){
+    const newArr = []
+
+    for (let i =0;i<arr.length;i++){
         tempArr.push(arr[i])
-        count++
-        if(count== size){
+        if (tempArr.length== size){
             newArr.push(tempArr)
             tempArr = []
-            count =0
-        }else if(i+size>=arr.length){
-            newArr.push(arr.splice(i,i+size))
-            break
         }
-    
-     }
-    return newArr 
-    };
-    
+    }
+    if (tempArr.length){
+        newArr.push(tempArr)
+    }
+    return newArr
+
+
+};
+
+
+
+
+arr = [1,9,6,3,2], size = 3
+arr = [1,2,3,4,5], size = 1
+
+arr = [8,5,3,2,6], size = 6
+
+
+console.log(chunk(arr, size))
